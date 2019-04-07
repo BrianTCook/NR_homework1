@@ -1,0 +1,16 @@
+\subsection{Part B}
+
+For this part of the homework we are told to find the values of $n(10^{-4})$, $n(10^{-2})$, $n(10^{-1})$, $n(1)$, and $n(5)$; recall that
+
+\begin{align}
+n(x) &= A\langle N_{sat} \rangle \left({x\over b}\right)^{a-3} \exp\left[-\left({x\over b}\right)^{c}\right].
+\end{align}
+
+The interpolation routine is unaffected by the choice of $A$ and $\langle N_{sat} \rangle$ so I am setting them both equal to 1. The only sacrifice we are making is a normalized distribution.
+
+
+Using the Neville interpolation routine for this function is ill-advised as it is not well suited for unevenly sampled points in linear space (or exponential * polynomial with floating point exponent). Using a single polynomial function would require a great number of evaluation (which is bad because we are only using 5) or be underfitted.
+
+A natural cubic spline will be better as there will be a cubic fit for sets of points rather than a polynomial that fits all of the points in the sample. I have included both a linear interpolation and a natural cubic spline for comparison purposes; see Figure \ref{fig:12b1}. Akima cubic spline would be better (one outlier) but this routine is not mentioned in the textbook and online documentation is primarily focused on the relevant \texttt{scipy} function.
+
+\lstinputlisting{homework1problem2partb.py}

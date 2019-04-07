@@ -1,0 +1,12 @@
+\subsection{Part B}
+
+We are given the halo mass for 5 haloes and in 3A we compute the optimal values of $a$, $b$, and $c$ such that the distribution of satellites follows the prescribed number density profile $n(x)$. Na\"{i}vely I would suspect that a linear interpolator could be applied for a new halo with mass $M$ such that
+
+\begin{align}
+M_{i} &< M < M_{j}, \\
+\mat{p} &= {1\over 2} \left(\mat{p}_{i} + \mat{p}_{j}\right),
+\end{align}
+
+where $\mat{p}$ is the interpolated parameter vector $\mat{p} = (a,b,c)$. The accuracy of this interpolator would improve with more haloes; we only have five to work with so this would be a pretty crude interpolator.
+
+\lstinputlisting{homework1problem3partb.py}

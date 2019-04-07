@@ -1,0 +1,21 @@
+\subsection{Part F}
+
+In this section we are tasked with finding the values of $x$ such that
+
+\begin{align}
+N(x) &= {1\over 2} N_{max}.
+\end{align}
+
+To achieve this we can find the roots of the equation $N(x) - {1\over 2}N_{max} = 0$ using the Newton-Raphson method. As long as the initial guesses are suitable the iteration
+
+\begin{align}
+x_{i+1} &= x_{i} - {f(x_{i}) \over f'(x_{i})}
+\end{align}
+
+will converge.
+
+\lstinputlisting{homework1problem2partf.py}
+
+The roots for the values $a$, $b$, and $c$ used throughout this assignment are printed below:
+
+\lstinputlisting{homework1problem2partf_print.txt}

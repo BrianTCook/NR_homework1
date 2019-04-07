@@ -1,0 +1,130 @@
+# Problem 2, Part G
+
+def mergesort(lst, N_lst):
+    
+    flag = 0
+    while flag == 0:
+    
+        if len(lst) >= 2:
+
+            if len(lst)%2 == 0:
+                midpoint = len(lst)/2
+            if len(lst)%2 != 0:
+                midpoint = (len(lst) + 1)/2
+
+            midpoint = int(midpoint) #indices must be integers
+                
+            #step 1, NUR5.pdf pseudocode
+            left = lst[:midpoint]
+            right = lst[midpoint:]
+            
+            #step 2
+            N_left, N_right = len(left), len(right)
+            left = mergesort(left, N_left)
+            right = mergesort(right, N_right)
+
+            i = 0 #left index
+            j = 0 #right index
+            k = 0 #lst index
+
+
+            #steps 3 and 4
+            while i < len(left) and j < len(right):
+                if left[i] <= right[j]:
+                    lst[k] = left[i]
+                    i += 1 #go to next element in left half
+                else:
+                    lst[k] = right[j]
+                    j += 1 #go to next element in right half
+                k += 1 #go to next element in list that is the result of merging the two halves
+
+
+            #in cases of odd lst one of the halves will be iterated over before, in which case we simply need to 
+            #include the remaining elements from the longer of the two halves
+            while i < len(left):
+                lst[k] = left[i]
+                i += 1
+                k += 1
+            while j < len(right):
+                lst[k] = right[j]
+                j += 1
+                k += 1
+                
+        if len(lst) == N_lst:
+        
+            flag = 1
+            
+    return lst
+    
+haloes = [creates_satellites(100) for i in range(1000)]
+
+all_xs = []
+for halo in haloes:
+    for satellite in halo:
+        r, theta, phi = satellite
+        all_xs.append(r)
+
+X_bins = np.logspace(-4,np.log10(5),N_bins+1)
+Y_bins = [0 for i in range(N_bins)]
+Ys = [[] for i in range(N_bins)]
+
+for x in all_xs:
+    i = 0
+    while i < len(X_bins)-1:
+        xi, xf = X_bins[i], X_bins[i+1]
+
+        if x >= xi and x <= xf:
+            Y_bins[i] += 1
+            Y_bin = Ys[i]
+            Y_bin.append(x)
+            break
+        else:
+            i += 1
+    
+    
+    
+max_index = Y_bins.index(max(Y_bins))
+
+list_to_be_sorted = Ys[max_index]
+sorted_list = mergesort(list_to_be_sorted, len(list_to_be_sorted))
+
+median_index = int(0.5*len(sorted_list))
+sixteen_index = int(0.16*len(sorted_list))
+eightyfour_index = int(0.84*len(sorted_list))
+
+print('median of this bin is %.03f'%(sorted_list[median_index]))
+print('16th percentile of this bin is %.03f'%(sorted_list[sixteen_index]))
+print('84th percentile of this bin is %.03f'%(sorted_list[eightyfour_index]))
+
+values_to_be_histed = [0 for i in range(len(haloes))]
+
+#only need the max_index
+for i in range(len(haloes)):
+    halo = haloes[i]
+    xs = []
+    for satellite in halo:
+        r, theta, phi = satellite
+        xs.append(r)
+        
+    for x in xs:
+
+        xi, xf = X_bins[max_index], X_bins[max_index+1]
+
+        if x >= xi and x <= xf:
+            values_to_be_histed[i] += 1
+
+mean_values_to_be_histed = sum(values_to_be_histed)/len(values_to_be_histed)
+
+min_val, max_val = min(values_to_be_histed), max(values_to_be_histed)
+N_bins = int(max_val - min_val)
+histed = [0 for i in range(N_bins+1)]
+for val in values_to_be_histed:
+    ind = val - min_val
+    histed[ind] += 1
+    
+X_plot = np.linspace(min_val, max_val, len(histed))
+Y_plot = [histed[i]/sum(histed) for i in range(len(histed))]
+Y_Poisson = [Poisson(mean_values_to_be_histed, int(x)) for x in X_plot]
+plt.plot(X_plot, Y_plot, label='Data')
+plt.plot(X_plot, Y_Poisson, label=r'Poission, $\lambda = %.02f$'%mean_values_to_be_histed)
+plt.legend(loc='best')

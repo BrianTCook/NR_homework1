@@ -1,0 +1,14 @@
+\subsection{Part C}
+
+We want to evaluate the derivative of $n(x)$ at $x = b$. The analytic expression for $n'(x)$ was determined using \texttt{Mathematica} and implemented as a handwritten Python function. I then used Ridders' method of differentiation built upon the central differences routine where the ideal step size $h^{\star}$ is determined for the equation
+
+\begin{align}
+f'(x) &= \lim_{h\to 0} {f(x+h)-f(x-h) \over 2h}, \\
+&\approx {f(x+h^{\star})-f(x-h^{\star}) \over 2h^{\star}}.
+\end{align}
+
+\lstinputlisting{homework1problem2partc.py}
+
+The numerical and analytic results are outputted by the script, as well as the absolute difference between the two:
+
+\lstinputlisting{homework1problem2partc_print.txt}

@@ -1,0 +1,22 @@
+\subsection{Part A}
+
+The number density profile is
+
+\begin{align}
+n(x) &= A \langle N_{sat} \rangle \Big({x\over b}\Big)^{a-3} \exp\Big[-\Big({x\over b}\Big)^{c}\Big],
+\end{align}
+
+where $x \equiv r/r_{virial}$. The integral we need to solve is
+
+\begin{align}
+\int_{x_{min}}^{x_{max}} n(x) \, 4\pi x^{2}  dx &= \langle N_{sat} \rangle, \\
+A &= {1 \over \int_{x_{min}}^{x_{max}}  \Big({x\over b}\Big)^{a-3} \exp\Big[-\Big({x\over b}\Big)^{c}\Big] \, 4\pi x^{2} dx}
+\end{align}
+
+It turns out the value of $\langle N_{sat} \rangle$ is irrelevant.
+
+\lstinputlisting{homework1problem2parta.py}
+
+Given quasi-randomly (I picked the indices but as demonstrated in 1B there is little correlation in the list of random numbers) values of $a$, $b$, and $c$, the computed value of $A$ are provided as this script's print statement:
+
+\lstinputlisting{homework1problem2parta_print.txt}

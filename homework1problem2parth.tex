@@ -1,0 +1,13 @@
+\subsection{Part H}
+
+To find the value of $A = A(a,b,c)$ we can borrow the functions written in previous parts and create a list comprehension (so as to avoid a nested for loop with three layers) to create a table of values 
+
+\begin{tabular}{c | c | c | c}
+$a$ & $b$ & $c$ & $A(a,b,c)$ \\
+\hline
+$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ 
+\end{tabular}
+
+For the sake of brevity I have saved the table rather than printed it for this output PDF (as the instructions did not explicitly say to print the table). The interpolation scheme takes three ordered pairs ($(a_{0}, a_{1})$, $(b_{0}, b_{1})$, $(c_{0}, c_{1})$) and uses the scheme described on the trilinear interpolation Wikipedia page such that $A(a,b,c)$ can be interpolated in the appropriate $a$, $b$, and $c$ domains.
+
+\lstinputlisting{homework1problem2parth.py}

@@ -1,0 +1,7 @@
+\subsection{Part G}
+
+To start we need to find the radial bin with the most satellites across all of the haloes being considered. To do so we iterate through each halo, iterate through the satellites, and populate a list with the number of satellites in each particular radial bin. The most crowded bin can be found using a built-in Python function. I then wrote a merge sort algorithm which is robust if not very efficient in terms of storage. To compute the desired percentiles we just need to sort the bins in ascending order and then determine which index corresponds to a particular percentile.
+
+For the comparison to a Poisson distribution (see Figure \ref{fig:12g1}) I again have to iterate through each halo and find the satellites in the bin determined as described above. We can then compute the mean number of satellites in this radial bin and use the Poisson function written in problem 1 part A. The agreement between the two distributions appears to be qualitatively sufficient but further analysis would be needed to make quantitative comments about how well it matches Poissonian statistics.
+
+\lstinputlisting{homework1problem2partg.py}

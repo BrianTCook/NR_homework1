@@ -1,0 +1,15 @@
+\subsection{Part A}
+
+In this section we are tasked with developing a numerical version of the familiar Poisson distribution,
+
+\begin{align}
+P_{\lambda}(k) = \frac{\lambda^{k} e^{-\lambda}}{k!}.
+\end{align}
+
+\lstinputlisting{homework1problem1parta.py}
+
+The desired values of $(\lambda, k)$ are \texttt{[1, 0], [5, 10], [3, 21], [2.6, 40]} and the output of this script is
+
+\lstinputlisting{homework1problem1parta_print.txt}
+
+If data storage was not a concern we would not need to distinguish the way in which $k!$ is evaluated, but for large values of $k$ such that $k! > 2^{64}$ the denominator needs to be stored as a floating point rather than as an integer.

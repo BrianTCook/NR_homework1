@@ -1,0 +1,16 @@
+\subsection{Part D}
+
+The probability distribution is
+
+\begin{align}
+p(x) dx &= n(x) 4\pi x^{2} dx / \langle N_{sat} \rangle, \\
+&= A \, \Big({x\over b}\Big)^{a-3} \exp\Big[-\Big({x\over b}\Big)^{c}\Big] \, 4\pi x^{2} dx.
+\end{align}
+
+I chose to use random sampling to determine the radial coordinates of the generated satellites. I used the \texttt{random} library to find pseudo-random indices for my list of $10^{6}$ random numbers from problem 1 part B for the sampling as well as finding suitable angular coordinates $(\theta, \phi)$. It was difficult to find a suitable way of sampling my list of generated pseudo-random numbers such that many $(x,y)$ ordered pairs could be tested for sampling purposes In essence a random $x$ and $y$ are determined, and if the chosen value of $y$ is below $p(x) \dd x$ then the value of $x$ is accepted. In the case where the probability is very small (e.g, $x \gg 1$) then the odds of finding a random $y$ value below that threshold is comparatively small, which means the value of $x$ is unlikely to be accepted. 
+
+\lstinputlisting{homework1problem2partd.py}
+
+The 100 satellites are given in the \texttt{.txt} file below in spherical coordinates:
+
+

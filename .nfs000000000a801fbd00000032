@@ -1,0 +1,17 @@
+\subsection{Part A}
+
+For this problem we will need to consult \texttt{NUR7.pdf}, which outlines the likelihood associated with a parameter vector $\mat{p}$ using Poissonian statistics:
+
+\begin{align}
+\mathcal{L}(\mat{p}) &= \prod_{i=0}^{N-1} {\mu\left(x_{i}|\mat{p}\right)^{y_{i} \exp\left(-\mu\left(x_{i}|\mat{p}\right)\right) \over y_{i}!}.
+\end{align}
+
+The equation we will need to solve to extremize the log-likelihood is
+
+\begin{align}
+{\partial \ln \mathcal{L}(\mat{p}) \over \partial p_{k} &= \sum_{i=0}^{N-1} \left[\left({y_{i} \over mu\left(x_{i}|\mat{p}} - 1\right) {\partial \mu\left(x_{i}|\mat{p}\right) \over \partial p_{k}} \right],
+\end{align}
+
+where in this case $\mat{p} = (a,b,c)$.
+
+\lstinputlisting{homework1problem3parta.py}

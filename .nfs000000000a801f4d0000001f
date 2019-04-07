@@ -1,0 +1,8 @@
+\subsection{Part A}
+
+\begin{align}
+-\ln \mathcal{L} (\mat{p}) &= \sum_{j = 0}^{N_{halos}-1}\left{-\sum_{i = 0}^{N_{satellites}-1} \ln(\mu(\mat{x}_{i}|\mat{p})) - N_{satellites}\right}, \\
+-\ln \mathcal{L} (\mat{p}) &= -N_{all satellites} - \sum_{k = 0}^{N_{all satellites}-1} \ln(\mu(\mat{x}_{k}|\mat{p})).
+\end{align}
+
+\lstinputlisting{homework1problem3parta.py}

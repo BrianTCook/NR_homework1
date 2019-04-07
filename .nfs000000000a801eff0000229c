@@ -1,0 +1,98 @@
+#!/bin/bash
+
+echo ""
+echo "-------------------------------------"
+echo "Run Brian Cook's homework 1 solutions"
+echo "-------------------------------------"
+
+echo ""
+echo "-------------------------------------"
+echo "Running the Python scripts for each part"
+echo "-------------------------------------"
+
+echo ""
+echo "-------------------------------------"
+echo "Problem 1, Part A"
+echo "-------------------------------------"
+
+python3 homework1problem1parta.py
+
+echo ""
+echo "-------------------------------------"
+echo "Problem 1, Part B"
+echo "-------------------------------------"
+
+python3 homework1problem1partb.py
+
+echo ""
+echo "-------------------------------------"
+echo "Problem 2, Part A"
+echo "-------------------------------------"
+
+python3 homework1problem2parta.py
+
+echo ""
+echo "-------------------------------------"
+echo "Problem 2, Part B"
+echo "-------------------------------------"
+
+python3 homework1problem2partb.py
+
+echo ""
+echo "-------------------------------------"
+echo "Problem 2, Part C"
+echo "-------------------------------------"
+
+python3 homework1problem2partc.py
+
+echo ""
+echo "-------------------------------------"
+echo "Problem 2, Part D"
+echo "-------------------------------------"
+
+python3 homework1problem2partd.py
+
+echo ""
+echo "-------------------------------------"
+echo "Problem 2, Part E"
+echo "-------------------------------------"
+
+echo ""
+echo "-------------------------------------"
+echo "Problem 2, Part F"
+echo "-------------------------------------"
+
+python3 homework1problem2partf.py
+
+echo ""
+echo "-------------------------------------"
+echo "Problem 2, Part G"
+echo "-------------------------------------"
+
+echo ""
+echo "-------------------------------------"
+echo "Problem 2, Part H"
+echo "-------------------------------------"
+
+python3 homework1problem2parth.py
+
+echo ""
+echo "-------------------------------------"
+echo "Problem 3, Part A"
+echo "-------------------------------------"
+
+echo ""
+echo "-------------------------------------"
+echo "Problem 3, Part B"
+echo "-------------------------------------"
+
+echo ""
+echo "-------------------------------------"
+echo "Generating the pdf"
+echo "-------------------------------------"
+
+pdflatex homework1_cook.tex
+bibtex homework1_cook.aux
+pdflatex homework1_cook.tex
+pdflatex homework1_cook.tex
+
