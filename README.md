@@ -3,7 +3,7 @@ My solutions for the first homework of the Numerical Recipes in Astrophysics cou
 
 This homework included developing the following routines:
 
-2.) A Poisson distribution mindful of not taking too much memory for large values of (lambda, k).
+1.) A Poisson distribution mindful of not taking too much memory for large values of (lambda, k).
 
 2.) Random number generator using a combination of (M)LCG and a 64-bit XOR-shift
 
