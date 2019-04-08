@@ -96,9 +96,8 @@ echo "-------------------------------------"
 echo "Problem 3, Part A"
 echo "-------------------------------------"
 
-
-echo "Current Python script cannot apply the simplex method to find the optimal values of (a,b,c). Would need to work some more
-with the dictionary {(a,b,c): neglogL(a,b,c)} to get this to work."
+echo "Current Python script cannot apply the simplex method to find the optimal values of (a,b,c)"
+echo "Would need to work some more with the dictionary {(a,b,c): neglogL(a,b,c)} to get this to work."
 #python3 homework1problem3parta.py
 
 echo ""
