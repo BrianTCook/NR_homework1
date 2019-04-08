@@ -1,0 +1,43 @@
+\subsection{Part A}
+
+For this problem we will need to consult \texttt{NUR7.pdf}, which outlines the likelihood associated with a parameter vector $\mat{p}$ using Poissonian statistics:
+
+\begin{align}
+\mathcal{L}(\mat{p}) &= \prod_{i=0}^{N_{bins}-1} {\mu\left(x_{i}|\mat{p}\right)^{y_{i}} \exp\left(-\mu\left(x_{i}|\mat{p}\right)\right) \over y_{i}!}.
+\end{align}
+
+If we choose to bin the data in such a way that the bin size is sufficiently small then $y_{i} = 0, 1 \hspace{2mm} \forall i$ and we get the following (negative) log-likelihood for a particular halo:
+
+\begin{align}
+-\ln \mathcal{L}(\mat{p}) &= -\sum_{j=0}^{N_{satellites} - 1} \ln \left(\mu(x_{j}|\mat{p}\right) - \int \dd x \, \mu\left(x_{j}|\mat{p}\right),
+\end{align}
+
+The extremization of this function with respect to a particular parameter $p_{k}$ is
+
+\begin{align}
+-{\partial \ln \mathcal{L}(\mat{p}) \over \partial p_{k}} &= -\sum_{j=0}^{N_{satellites} - 1} \, {\partial \ln \left(\mu\left(x_{j}|\mat{p}\right)\right) \over \partial p_{k}} - \int \dd x \left( {\partial \mu\left(x_{j}|\mat{p} \right) \over \partial p_{k}}\right), \\
+0 &= -\sum_{j=0}^{N_{satellites} - 1} \, {1 \over \mu\left(x_{j}|\mat{p}\right)}{\partial \left(\mu\left(x_{j}|\mat{p}\right)\right) \over \partial p_{k}} - \int \dd x \left( {\partial \mu\left(x_{j}|\mat{p}\right) \over \partial p_{k}}\right).
+\end{align}
+
+If we choose $\mu\left(x_{i}|\mat{p}\right) = N(x, \mat{q}, \mat{p})$, using $N(x)$ from problem 2 part E where $\mat{q} = (A, \langle N_{sat} \rangle)$ and $\mat{p} = (a,b,c)$, then
+
+\begin{align}
+\label{usingderivs} \int \dd x \left( {\partial N(x, \mat{q}, \mat{p}) \over \partial p_{k}}\right) &= -\sum_{j=0}^{N_{satellites} - 1} \, {1 \over N(x, \mat{q}, \mat{p})}{\partial N(x, \mat{q}, \mat{p}) \over \partial p_{k}}.
+\end{align}
+
+In principle we could then write up a Python function that evaluates equation \eqref{usingderivs} for each of the parameters $a$, $b$, and $c$ but that would require differentiating $N$ numerically or finding the analytic expressions, both of which might be more trouble then they are worth. It might behoove us to then proceed with finding a minimum of the log-likelihood function using a multi-dimensional scheme like the downhill simplex method:
+
+\begin{align}
+\ln \mathcal{L}(\mat{p}) &= \sum_{j=0}^{N_{satellites} - 1} \ln N(x, \mat{q}, \mat{p}) + \int \dd x \, N(x, \mat{q}, \mat{p}), \\
+&= \sum_{j=0}^{N_{satellites} - 1} \ln \left[A(a,b,c) \langle N_{sat} \rangle \Big({x\over b}\Big)^{a-3} \exp\Big[-\Big({x\over b}\Big)^{c}\Big] \times 4\pi x^{2} \right] + N_{satellites}
+\end{align}
+
+If we omit terms with no dependence on $a$, $b$, and $c$ (by utilizing the identity $\ln(ab) = \ln a + \ln b$), we will get the equation we want to maximize, namely equation \eqref{noderivs}:
+
+\begin{align}
+\label{noderivs} -\ln \mathcal{L}(\mat{p}) &= -\bigg(\sum_{j=0}^{N_{satellites} - 1} \ln \left[A(a,b,c) \Big({x\over b}\Big)^{a-3} \exp\Big[-\Big({x\over b}\Big)^{c}\Big] \times 4\pi x^{2} \right] + N_{satellites}\bigg).
+\end{align}
+
+I have written a rough outline of how the simplex method could be implemented. I have created a dictionary $\{(a,b,c) : -\ln L(a,b,c)\}$ that is sorted by the dictionary values; one could in principle access the keys to compute things like $\mat{p}_{try}$, $\bar{\mat{p}}$, etc. and then update the dictionary such that one would find the global minimum of $-\ln \mathcal{L}(\mat{p})$ in the parameter space.
+
+\lstinputlisting{homework1problem3parta.py}
