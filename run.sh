@@ -97,7 +97,8 @@ echo "Problem 3, Part A"
 echo "-------------------------------------"
 
 
-echo "Current Python script exceeds the runtime limit, would need to optimize calculation of neglogL(a,b,c)"
+echo "Current Python script cannot apply the simplex method to find the optimal values of (a,b,c). Would need to work some more
+with the dictionary {(a,b,c): neglogL(a,b,c)} to get this to work."
 #python3 homework1problem3parta.py
 
 echo ""
