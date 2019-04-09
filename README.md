@@ -1,6 +1,8 @@
 # NR_homework1
 My solutions for the first homework of the Numerical Recipes in Astrophysics course offered in winter of 2019 at the Leiden Observatory.
 
+To get the outputs, type "sh run.sh" in the command line while in this directory after it has been downloaded on one of the pczaal computers.
+
 This homework included developing the following routines:
 
 1.) A Poisson distribution mindful of not taking too much memory for large values of (lambda, k).
