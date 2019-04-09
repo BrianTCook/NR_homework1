@@ -48,7 +48,7 @@ def spherical_coordinates():
 	theta = m.acos(1-2*randnums[0])
 	phi = 2*np.pi*randnums[1]
 	
-	return [r, phi, theta]
+	return [r, theta, phi]
 
 def creates_satellites(N_satellites):
     
